@@ -1,0 +1,33 @@
+---
+
+-
+   name: 'Copy file to Application Servers'
+   hosts: all
+   become: yes
+   tasks:
+   -  name: 'Copy file to stapp01'
+      copy:
+        src: /usr/src/devops/blog.txt
+        dest: /opt/devops
+        owner: tony
+        group: tony
+        mode: 0777
+      when: ansible_hostname  == 'stapp01'
+
+   -  name: 'Copy file to stapp02'
+      copy:
+        src: /usr/src/devops/story.txt
+        dest: /opt/devops
+        owner: steve
+        group: steve
+        mode: 0777
+      when: ansible_hostname == 'stapp02'
+
+   -  name: 'Copy file to stapp03'
+      copy:
+        src: /usr/src/devops/media.txt
+        dest: /opt/devops
+        owner: banner
+        group: banner
+        mode: 0777
+      when: ansible_hostname == 'stapp03'
