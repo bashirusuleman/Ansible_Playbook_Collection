@@ -3,7 +3,7 @@
 # Playbook to install and configure Apache and PHP  TASK  ##
 # #########################################################
 
-# Create a playbook ~/playbooks/httpd.yml on jump host and perform the following tasks on App Server 1.
+# Create a playbook ~/playbooks/httpd.yml on jump host and perform the following tasks on all App Servers .
 
 # a. Install httpd and php packages (whatever default version is available in yum repo).
 
@@ -14,7 +14,7 @@
 # d. Start and enable httpd service.
 
 - name: Install httpd & PHP
-  hosts: stapp01
+  hosts: all
   become: yes
   tasks:
   - yum: name=httpd state=installed
